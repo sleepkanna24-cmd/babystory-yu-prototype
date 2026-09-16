@@ -585,10 +585,18 @@
       .modal-footer { flex-wrap: wrap; }
       .modal-footer .btn { flex: 1; min-width: 120px; }
 
-      /* LINEシミュレーター：縦積み */
+      /* LINEシミュレーター：縦積み（実機のアドレスバー分を差し引いたdvh基準） */
       .flow-container { flex-direction: column; gap: 20px; }
-      .phone-frame { width: 100%; max-width: 320px; min-width: 0; margin: 0 auto; position: static; }
-      .phone-screen { height: auto; max-height: min(70vh, 520px); }
+      .phone-frame { width: 100%; max-width: 320px; min-width: 0; margin: 0 auto; position: static; padding: 8px; }
+      .phone-screen { height: auto; max-height: 400px; }
+      @supports (height: 100dvh) {
+        .phone-screen { max-height: min(48dvh, 400px); }
+      }
+      .line-header { padding: 8px 14px; }
+
+      /* ページ見出し・説明文をコンパクトに（LINE流入ページなど） */
+      #page-line-flow > div:first-child { margin-bottom: 10px !important; }
+      #page-line-flow > div:first-child h2 { margin-bottom: 2px; }
 
       .filter-row { gap: 10px; }
       .search-box { min-width: 0; width: 100%; }
